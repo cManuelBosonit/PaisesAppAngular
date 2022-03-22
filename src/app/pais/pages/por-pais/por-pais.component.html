@@ -1,3 +1,4 @@
+<div class="animate__animated animate__fadeIn animated__faster">
 <h2>Por Páis</h2>
 <hr>
 
@@ -12,7 +13,26 @@
     </div>
 </div>
 
+<ul *ngIf="mostrarSugerencias"
+    class="list-group"
+    >
+    <li *ngFor="let pais of paisesSugeridos"
+        class="list-group-item list-group-item-action">
+        <a  class="nav-link"
+            [routerLink]="['/pais', pais.cca2]">{{pais.name.common}}</a>
+    </li>
+    <li class="list-group-item list-group-item-action">
+        <a  
+            class="nav-link"
+            (click)="buscarSugerido(termino)"
+        >
+        Buscar "{{termino}}"
+        </a>
+    </li>
+</ul>
+
 <hr>
+</div>
 <div
     *ngIf="hayError"
     class="alert alert-danger">
